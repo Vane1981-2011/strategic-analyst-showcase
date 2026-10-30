@@ -91,7 +91,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei
     <a class="nav-item" onclick="switchTab('risk')"><span class="nav-icon">⚠️</span>风险监控<span class="nav-badge">3</span></a>
   </nav>
   <div style="padding:12px;border-top:1px solid var(--border-color);margin-top:auto;text-align:center;font-size:10px;color:var(--text-muted)">
-    数据更新：2026-08-23<br>系统状态：🟢 运行正常
+    数据更新：2026-10-30<br>系统状态：🟢 运行正常
   </div>
 </aside>
 
@@ -99,7 +99,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei
 </div>
 
 <div class="footer">
-  <p>© 2026 企业财务管控平台 | 基于 ZCode + WorkBuddy 智能办公平台构建</p>
+  <p>© 2026 企业财务管控平台 · 李霞 · 财务负责人作品集 ｜ 工具署名：ZCode（本人自建工具，非第三方产品）</p>
+  <p style="margin-top:4px">示例数据（脱敏模拟）· 指标区间 2025.10 — 2026.09 · 演示原型，非真实企业数据 ｜ 页面更新 2026-10-30</p>
   <p style="margin-top:4px">财务战略规划 · 全链路管控体系 · 预算编制 · 成本核算 · 资金调度 · 税务管理 · 风险预警</p>
   <p style="margin-top:4px"><a href="#" onclick="switchTab('overview');return false">经营驾驶舱</a> · <a href="#" onclick="switchTab('budget');return false">预算管理</a> · <a href="#" onclick="switchTab('capital');return false">资金管理</a> · <a href="#" onclick="switchTab('tax');return false">税务管理</a> · <a href="#" onclick="switchTab('risk');return false">风险监控</a></p>
 </div>
@@ -107,27 +108,28 @@ body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei
 <script>
 // ========== 数据 ==========
 const monthlyData = {
-  labels:['7月','8月','9月','10月','11月','12月','1月','2月','3月','4月','5月','6月'],
-  revenue:[2850,3120,2980,3450,3680,4200,3560,3890,4150,4480,4620,4850],
-  cost:[1820,1950,1880,2100,2250,2480,2150,2320,2480,2650,2720,2820],
-  profit:[1030,1170,1100,1350,1430,1720,1410,1570,1670,1830,1900,2030],
-  budget:[3000,3000,3200,3200,3500,3500,3800,3800,4000,4000,4500,4500]
+  labels:['10月','11月','12月','1月','2月','3月','4月','5月','6月','7月','8月','9月'],
+  revenue:[3400,3560,3780,3200,2950,3580,3900,4120,4350,4000,4200,4250],
+  cost:[2720,2850,3020,2560,2360,2860,3120,3300,3480,3200,3360,3220],
+  gross:[680,710,760,640,590,720,780,820,870,800,840,1030],
+  profit:[118,124,132,108,96,124,134,140,150,136,143,153],
+  budget:[3000,3200,3500,2800,2600,3100,3400,3600,3800,3500,3700,3800]
 };
 const cashFlowData = {
-  labels:['7月','8月','9月','10月','11月','12月','1月','2月','3月','4月','5月','6月'],
-  inflow:[3200,3450,3300,3800,4100,4600,3950,4250,4550,4900,5100,5350],
-  outflow:[2700,2850,2750,3100,3350,3600,3200,3400,3650,3850,3950,4100],
-  balance:[8500,9100,9650,10350,11100,12100,12850,13700,14600,15650,16800,18050]
+  labels:['10月','11月','12月','1月','2月','3月','4月','5月','6月','7月','8月','9月'],
+  inflow:[3400,3560,3780,3200,2950,3580,3900,4120,4350,4000,4200,4250],
+  outflow:[3150,3310,3510,2920,2670,3310,3630,3790,4020,3530,3750,3720],
+  balance:[5100,5350,5620,5900,6180,6450,6720,7050,7380,7850,8300,8830]
 };
 const riskIndicators = [
-  {name:'资产负债率',value:52.3,threshold:60,unit:'%',status:'normal',trend:'down'},
-  {name:'流动比率',value:1.85,threshold:1.5,unit:'',status:'normal',trend:'up'},
-  {name:'速动比率',value:1.32,threshold:0.8,unit:'',status:'normal',trend:'stable'},
-  {name:'应收账款周转天数',value:45,threshold:60,unit:'天',status:'normal',trend:'down'},
+  {name:'资产负债率',value:68.5,threshold:75,unit:'%',status:'normal',trend:'down'},
+  {name:'流动比率',value:1.24,threshold:1.0,unit:'',status:'normal',trend:'up'},
+  {name:'速动比率',value:0.92,threshold:0.8,unit:'',status:'normal',trend:'stable'},
+  {name:'应收账款周转天数',value:86,threshold:100,unit:'天',status:'normal',trend:'down'},
   {name:'存货周转天数',value:68,threshold:75,unit:'天',status:'warning',trend:'up'},
-  {name:'利息保障倍数',value:8.5,threshold:3,unit:'倍',status:'normal',trend:'stable'},
-  {name:'经营现金流比率',value:1.15,threshold:1,unit:'',status:'normal',trend:'up'},
-  {name:'成本费用率',value:78.2,threshold:82,unit:'%',status:'normal',trend:'down'}
+  {name:'利息保障倍数',value:4.2,threshold:3,unit:'倍',status:'normal',trend:'stable'},
+  {name:'经营现金流比率',value:1.05,threshold:1,unit:'',status:'normal',trend:'up'},
+  {name:'成本费用率',value:95.6,threshold:98,unit:'%',status:'normal',trend:'down'}
 ];
 const budgetVariance = [
   {dept:'销售部',budget:850,actual:820,variance:-30,rate:-3.5,analysis:'差旅费用控制良好'},
@@ -146,27 +148,27 @@ const financingOptions = [
   {name:'融资租赁',amount:5000,rate:'5.20%',term:'3年',feature:'设备抵押',score:72}
 ];
 const taxCompliance = [
-  {item:'增值税申报',deadline:'每月15日',status:'normal',lastDone:'2026-06-12'},
-  {item:'企业所得税预缴',deadline:'每季末次月15日',status:'normal',lastDone:'2026-04-10'},
-  {item:'个人所得税代扣',deadline:'每月15日',status:'normal',lastDone:'2026-06-10'},
-  {item:'印花税申报',deadline:'每月15日',status:'normal',lastDone:'2026-06-05'},
-  {item:'年度汇算清缴',deadline:'次年5月31日',status:'info',lastDone:'2026-05-25'},
+  {item:'增值税申报',deadline:'每月15日',status:'normal',lastDone:'2026-10-14'},
+  {item:'企业所得税预缴',deadline:'每季末次月15日',status:'normal',lastDone:'2026-10-13'},
+  {item:'个人所得税代扣',deadline:'每月15日',status:'normal',lastDone:'2026-10-10'},
+  {item:'印花税申报',deadline:'每月15日',status:'normal',lastDone:'2026-10-09'},
+  {item:'年度汇算清缴',deadline:'次年5月31日',status:'info',lastDone:'2026-05-22'},
   {item:'税收优惠备案',deadline:'2026-12-31',status:'warning',lastDone:'2026-01-15'},
-  {item:'关联交易申报',deadline:'次年6月30日',status:'info',lastDone:'2026-06-20'}
+  {item:'关联交易申报',deadline:'次年6月30日',status:'info',lastDone:'2026-06-18'}
 ];
 const riskEvents = [
-  {date:'2026-06-25',type:'warning',title:'存货周转天数接近预警线',desc:'原材料库存积压增加，周转天数上升至68天',status:'监控中'},
-  {date:'2026-06-18',type:'warning',title:'A客户回款延迟',desc:'应收账款逾期15天，金额320万元',status:'已催收'},
-  {date:'2026-06-10',type:'danger',title:'汇率波动预警',desc:'美元兑人民币汇率突破7.35',status:'已对冲'},
-  {date:'2026-05-28',type:'normal',title:'融资成本优化落地',desc:'完成2亿元中期票据发行，利率较上期下降50BP',status:'已完成'},
-  {date:'2026-05-15',type:'warning',title:'预算偏差提醒',desc:'市场部费用超预算4.6%',status:'已整改'},
-  {date:'2026-05-05',type:'danger',title:'税务稽查通知',desc:'收到税务局专项稽查通知',status:'配合中'}
+  {date:'2026-09-25',type:'warning',title:'存货周转天数接近预警线',desc:'合同履约成本余额上升，周转天数升至 68 天',status:'监控中'},
+  {date:'2026-09-18',type:'warning',title:'A客户回款延迟',desc:'应收账款逾期15天，金额320万元',status:'已催收'},
+  {date:'2026-09-10',type:'danger',title:'汇率波动预警',desc:'美元兑人民币汇率突破7.35',status:'已对冲'},
+  {date:'2026-08-28',type:'normal',title:'融资成本优化落地',desc:'完成2亿元中期票据发行，利率较上期下降35BP',status:'已完成'},
+  {date:'2026-08-15',type:'warning',title:'预算偏差提醒',desc:'市场部费用超预算4.6%',status:'已整改'},
+  {date:'2026-08-05',type:'danger',title:'税务稽查通知',desc:'收到税务局专项稽查通知',status:'配合中'}
 ];
 const taxBurdenTrend = {
-  labels:['Q1','Q2','Q3','Q4','Q1(本)','Q2(本)'],
-  comprehensiveRate:[22.5,21.8,21.2,20.5,19.8,19.2],
-  industryAvg:[24.0,23.5,23.0,22.8,22.5,22.0],
-  vatRate:[12.8,12.5,12.0,11.5,11.0,10.8]
+  labels:['2025Q2','2025Q3','2025Q4','2026Q1','2026Q2','2026Q3'],
+  comprehensiveRate:[14.8,14.1,13.6,13.1,12.6,12.3],
+  industryAvg:[14.6,14.4,14.2,14.0,13.8,13.6],
+  vatRate:[9.2,8.9,8.6,8.3,8.1,7.9]
 };
 
 // ========== 图表工具 ==========
@@ -195,18 +197,18 @@ function renderOverview(main){
   main.innerHTML=`
     <div class="page-header"><div><h2>📈 经营驾驶舱</h2><div class="breadcrumb">首页 / <span>经营概览</span></div></div></div>
     <div class="kpi-grid">
-      <div class="kpi-card"><div class="kpi-label">📊 营业收入（本月）</div><div class="kpi-value blue">¥4,850<span style="font-size:14px">万</span></div><div class="kpi-change up">▲ 5.0% 环比</div><div class="kpi-sub">年度累计：¥45,290万</div><div class="kpi-progress-bar"><div class="kpi-progress-fill blue" style="width:88%"></div></div></div>
-      <div class="kpi-card"><div class="kpi-label">💰 净利润（本月）</div><div class="kpi-value green">¥2,030<span style="font-size:14px">万</span></div><div class="kpi-change up">▲ 6.8% 环比</div><div class="kpi-sub">净利润率：41.9%</div><div class="kpi-progress-bar"><div class="kpi-progress-fill green" style="width:91%"></div></div></div>
+      <div class="kpi-card"><div class="kpi-label">📊 营业收入（本月）</div><div class="kpi-value blue">¥4,250<span style="font-size:14px">万</span></div><div class="kpi-change up">▲ 1.2% 环比</div><div class="kpi-sub">年度累计：¥45,290万</div><div class="kpi-progress-bar"><div class="kpi-progress-fill blue" style="width:88%"></div></div></div>
+      <div class="kpi-card"><div class="kpi-label">💰 净利润（本月）</div><div class="kpi-value green">¥153<span style="font-size:14px">万</span></div><div class="kpi-change up">▲ 7.0% 环比</div><div class="kpi-sub">净利润率：3.6%</div><div class="kpi-progress-bar"><div class="kpi-progress-fill green" style="width:91%"></div></div></div>
       <div class="kpi-card"><div class="kpi-label">🏦 资金余额</div><div class="kpi-value cyan">¥8,830<span style="font-size:14px">万</span></div><div class="kpi-change up">▲ 3.2% 环比</div><div class="kpi-sub">可用额度：¥15,000万</div><div class="kpi-progress-bar"><div class="kpi-progress-fill cyan" style="width:59%"></div></div></div>
       <div class="kpi-card"><div class="kpi-label">⚠️ 风险指数</div><div class="kpi-value green">55<span style="font-size:13px">/100</span></div><div class="kpi-change" style="color:var(--accent-green)">▼ 5.2% 风险下降</div><div class="kpi-sub">预警级别：🟢 安全</div><div class="kpi-progress-bar"><div class="kpi-progress-fill green" style="width:55%"></div></div></div>
     </div>
     <div class="chart-grid">
-      <div class="chart-card chart-grid-full"><div class="chart-card-header"><h3>📈 营收 / 成本 / 利润趋势</h3><span class="chart-period">2025.07 — 2026.06</span></div><div class="mini-stats"><div class="mini-stat"><div class="mini-stat-value" style="color:var(--accent-blue)">¥45,290万</div><div class="mini-stat-label">年度累计营收</div></div><div class="mini-stat"><div class="mini-stat-value" style="color:var(--accent-red)">¥27,160万</div><div class="mini-stat-label">年度累计成本</div></div><div class="mini-stat"><div class="mini-stat-value" style="color:var(--accent-green)">¥18,130万</div><div class="mini-stat-label">年度累计利润</div></div><div class="mini-stat"><div class="mini-stat-value" style="color:var(--accent-cyan)">40.0%</div><div class="mini-stat-label">平均利润率</div></div></div><div class="chart-card-body" style="height:320px"><canvas id="c1"></canvas></div></div>
+      <div class="chart-card chart-grid-full"><div class="chart-card-header"><h3>📈 营收 / 成本 / 利润趋势</h3><span class="chart-period">2025.10 — 2026.09</span></div><div class="mini-stats"><div class="mini-stat"><div class="mini-stat-value" style="color:var(--accent-blue)">¥45,290万</div><div class="mini-stat-label">年度累计营收</div></div><div class="mini-stat"><div class="mini-stat-value" style="color:var(--accent-red)">¥36,050万</div><div class="mini-stat-label">年度累计成本</div></div><div class="mini-stat"><div class="mini-stat-value" style="color:var(--accent-green)">¥9,240万</div><div class="mini-stat-label">年度累计毛利</div></div><div class="mini-stat"><div class="mini-stat-value" style="color:var(--accent-cyan)">20.4%</div><div class="mini-stat-label">平均毛利率</div></div></div><div class="chart-card-body" style="height:320px"><canvas id="c1"></canvas></div></div>
       <div class="chart-card"><div class="chart-card-header"><h3>💳 月度现金流</h3><span class="chart-period">年度</span></div><div class="chart-card-body" style="height:280px"><canvas id="c2"></canvas></div></div>
       <div class="chart-card"><div class="chart-card-header"><h3>🏦 资金余额趋势</h3><span class="chart-period">年度</span></div><div class="chart-card-body" style="height:280px"><canvas id="c3"></canvas></div></div>
-      <div class="chart-card"><div class="chart-card-header"><h3>📋 部门预算执行</h3><span class="chart-period">6月</span></div><div class="chart-card-body" style="height:280px"><canvas id="c4"></canvas></div></div>
+      <div class="chart-card"><div class="chart-card-header"><h3>📋 部门预算执行</h3><span class="chart-period">全年</span></div><div class="chart-card-body" style="height:280px"><canvas id="c4"></canvas></div></div>
       <div class="chart-card"><div class="chart-card-header"><h3>⚠️ 核心风险指标</h3><span class="chart-period">实时</span></div><div class="chart-card-body">${renderRiskTable()}</div></div>
-      <div class="chart-card"><div class="chart-card-header"><h3>🔍 成本结构</h3><span class="chart-period">6月</span></div><div class="chart-card-body" style="height:280px"><canvas id="c5"></canvas></div></div>
+      <div class="chart-card"><div class="chart-card-header"><h3>🔍 成本结构</h3><span class="chart-period">本年累计</span></div><div class="chart-card-body" style="height:280px"><canvas id="c5"></canvas></div></div>
     </div>`;
   setTimeout(()=>{
     initRevenueChart('c1');initCashFlowChart('c2');initBalanceChart('c3');initBudgetChart('c4');initCostChart('c5');
@@ -218,13 +220,13 @@ function renderBudget(main){
   main.innerHTML=`
     <div class="page-header"><div><h2>📋 预算管理</h2><div class="breadcrumb">首页 / <span>预算管理</span></div></div></div>
     <div class="kpi-grid">
-      <div class="kpi-card"><div class="kpi-label">📊 年度预算总额</div><div class="kpi-value blue">¥3,900<span style="font-size:14px">万</span></div><div class="kpi-sub">较上年增长 8.3%</div></div>
-      <div class="kpi-card"><div class="kpi-label">✅ 综合执行率</div><div class="kpi-value green">97.3%</div><div class="kpi-sub">↑1.2pp vs 上年</div></div>
+      <div class="kpi-card"><div class="kpi-label">📊 年度费用预算总额</div><div class="kpi-value blue">¥3,900<span style="font-size:14px">万</span></div><div class="kpi-sub">较上年增长 8.3%</div></div>
+      <div class="kpi-card"><div class="kpi-label">✅ 费用预算执行率</div><div class="kpi-value green">97.6%</div><div class="kpi-sub">实际 3,805 万 / 预算 3,900 万</div></div>
       <div class="kpi-card"><div class="kpi-label">⚠️ 超预算部门</div><div class="kpi-value orange">1<span style="font-size:14px">个</span></div><div class="kpi-sub">市场部 超支4.6%</div></div>
-      <div class="kpi-card"><div class="kpi-label">💰 预算节余额度</div><div class="kpi-value green">¥105<span style="font-size:14px">万</span></div><div class="kpi-sub">可调配资金空间</div></div>
+      <div class="kpi-card"><div class="kpi-label">💰 预算节余额度</div><div class="kpi-value green">¥95<span style="font-size:14px">万</span></div><div class="kpi-sub">可调配资金空间</div></div>
     </div>
     <div class="chart-grid">
-      <div class="chart-card chart-grid-full"><div class="chart-card-header"><h3>📈 预算目标 vs 实际营收</h3><span class="chart-period">年度</span></div><div class="chart-card-body" style="height:320px"><canvas id="cb1"></canvas></div></div>
+      <div class="chart-card chart-grid-full"><div class="chart-card-header"><h3>📈 营收预算目标 vs 实际营收（预算 40,000 万，达成 113.2%）</h3><span class="chart-period">2025.10 — 2026.09</span></div><div class="chart-card-body" style="height:320px"><canvas id="cb1"></canvas></div></div>
       <div class="chart-card chart-grid-full"><div class="chart-card-header"><h3>🔍 预算差异分析明细</h3><span class="chart-period">单位：万元</span></div><div class="chart-card-body">${renderBudgetTable()}</div></div>
     </div>`;
   setTimeout(()=>initBudgetVsActual('cb1'),100);
@@ -236,7 +238,7 @@ function renderCapital(main){
     <div class="page-header"><div><h2>💰 资金管理</h2><div class="breadcrumb">首页 / <span>资金管理</span></div></div></div>
     <div class="kpi-grid">
       <div class="kpi-card"><div class="kpi-label">🏦 资金池余额</div><div class="kpi-value cyan">¥8,830<span style="font-size:14px">万</span></div><div class="kpi-sub">可用信贷额度：¥15,000万</div></div>
-      <div class="kpi-card"><div class="kpi-label">📉 综合资金成本</div><div class="kpi-value green">4.15%</div><div class="kpi-sub">↓0.35pp | 节约¥420万</div></div>
+      <div class="kpi-card"><div class="kpi-label">📉 综合资金成本</div><div class="kpi-value green">4.15%</div><div class="kpi-sub">↓0.35pp | 年化节约¥122.5万</div></div>
       <div class="kpi-card"><div class="kpi-label">💳 融资余额</div><div class="kpi-value blue">¥3.5<span style="font-size:14px">亿</span></div><div class="kpi-sub">3笔贷款 + 1笔债券</div></div>
       <div class="kpi-card"><div class="kpi-label">🔄 资金归集率</div><div class="kpi-value green">95.2%</div><div class="kpi-sub">8家子公司已归集</div></div>
     </div>
@@ -253,7 +255,7 @@ function renderTax(main){
   main.innerHTML=`
     <div class="page-header"><div><h2>📑 税务管理</h2><div class="breadcrumb">首页 / <span>税务管理</span></div></div></div>
     <div class="kpi-grid">
-      <div class="kpi-card"><div class="kpi-label">📊 综合税负率</div><div class="kpi-value green">19.2%</div><div class="kpi-sub">行业均值：22.0% | 优于行业</div></div>
+      <div class="kpi-card"><div class="kpi-label">📊 综合税负率</div><div class="kpi-value green">12.3%</div><div class="kpi-sub">行业参考：13.6% | 优于参考值</div></div>
       <div class="kpi-card"><div class="kpi-label">💰 年度纳税总额</div><div class="kpi-value blue">¥5,550<span style="font-size:14px">万</span></div><div class="kpi-sub">7个税种</div></div>
       <div class="kpi-card"><div class="kpi-label">✅ 筹划节税</div><div class="kpi-value green">¥680<span style="font-size:14px">万</span></div><div class="kpi-sub">研发加计 + 高新优惠</div></div>
       <div class="kpi-card"><div class="kpi-label">📋 合规状态</div><div class="kpi-value cyan">100%</div><div class="kpi-sub">无逾期、无处罚</div></div>
@@ -287,7 +289,7 @@ function initRevenueChart(id){
   const c=new Chart(ctx,{type:'line',data:{labels:monthlyData.labels,datasets:[
     {label:'营业收入',data:monthlyData.revenue,borderColor:'#3b82f6',backgroundColor:createGradient(ctx,'rgba(59,130,246,.25)','rgba(59,130,246,.02)'),fill:true,tension:.4,borderWidth:2,pointRadius:3},
     {label:'营业成本',data:monthlyData.cost,borderColor:'#ef4444',backgroundColor:createGradient(ctx,'rgba(239,68,68,.15)','rgba(239,68,68,.02)'),fill:true,tension:.4,borderWidth:2,pointRadius:3},
-    {label:'净利润',data:monthlyData.profit,borderColor:'#10b981',backgroundColor:createGradient(ctx,'rgba(16,185,129,.15)','rgba(16,185,129,.02)'),fill:true,tension:.4,borderWidth:2,pointRadius:3}
+    {label:'毛利',data:monthlyData.gross,borderColor:'#10b981',backgroundColor:createGradient(ctx,'rgba(16,185,129,.15)','rgba(16,185,129,.02)'),fill:true,tension:.4,borderWidth:2,pointRadius:3}
   ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{usePointStyle:true,padding:16}}},scales:{y:{grid:{color:'rgba(30,58,95,.4)'},ticks:{callback:v=>(v/1000).toFixed(0)+'k'}},x:{grid:{display:false}}}}});currentCharts.push(c);
 }
 function initCashFlowChart(id){
